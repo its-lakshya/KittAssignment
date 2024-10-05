@@ -8,13 +8,13 @@ const SearchResults = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 6200)
+    }, 9200)
     return () => clearTimeout(timer)
   }, [])
   return (
-    <div className='w-full'>
+    <div className='w-full h-auto flex flex-col items-center'>
         <ResultsHeader/>
-        <div className='w-full h-screen px-[13rem]'>
+        <div className='w-full h-auto px-[13rem] max-xl:px-[6rem] max-lg:px-[3rem] max-sm:px-[1rem] flex justify-center'>
           {isLoading 
           ? <Loader/>
           : <FlightList/>}

@@ -77,15 +77,15 @@ const SearchCard = () => {
   }
 
   return (
-    <Card className="w-full h-[252px] py-[28px] px-[24px] flex flex-col justify-between font-light"
+    <Card className="w-full h-[252px] py-[28px] px-[24px] flex flex-col justify-between font-light 2xl:w-[1057px] max-2xl:h-auto max-2xl:gap-4"
     style={{boxShadow: "0px -6px 22.6px #FFFFFF, 0px 19px 19.4px rgba(0, 0, 0, 0.02), 0px 1px 11px 3px rgba(0, 0, 0, 0.06)"}}>
       <Button variant="secondary" className="w-[127px] text-[16px]">
         Flights
       </Button>
-      <div className="flex gap-[24px]">
-        <div className="flex gap-[12px]">
-          <Select onValueChange={handleFrom}>
-            <SelectTrigger className="w-[267px] h-[60px]">
+      <div className="flex gap-[24px] max-[864px]:flex-col">
+        <div className="flex gap-[12px] max-sm:flex-col max-sm:w-full max-sm:items-center items-center max-2xl:w-[60%] max-[864px]:w-full">
+          <Select  onValueChange={handleFrom} >
+            <SelectTrigger className="w-[267px] h-[60px] max-sm:w-full max-2xl:w-full">
               <SelectValue placeholder="Where from?" />
             </SelectTrigger>
             <SelectContent>
@@ -102,10 +102,10 @@ const SearchCard = () => {
               })}
             </SelectContent>
           </Select>
-          <img src={swapIcon} alt="logo" />
+          <img className='max-sm:size-10' src={swapIcon} alt="logo" />
           <Select onValueChange={handleTo}>
-            <SelectTrigger className="w-[267px] h-[60px]">
-              <SelectValue placeholder="Where to?" />
+            <SelectTrigger className="w-[267px] h-[60px] max-sm:w-full max-2xl:w-full">
+              <SelectValue placeholder="Where to?"/>
             </SelectTrigger>
             <SelectContent>
               {airports.map((data, index) => {
@@ -122,13 +122,13 @@ const SearchCard = () => {
           </Select>
         </div>
 
-        <div className="flex gap-[12px]">
+        <div className="flex gap-[12px] max-sm:flex-col max-2xl:w-[40%] max-[864px]:w-full">
           <Popover>
             <PopoverTrigger asChild>
               <Button
                 variant={"outline"}
                 className={cn(
-                  "w-[177px] h-[60px] justify-start text-left font-normal",
+                  "w-[177px] h-[60px] justify-start text-left font-normal max-sm:w-full max-2xl:w-full",
                   !departureDate && "text-muted-foreground"
                 )}
               >
@@ -154,7 +154,7 @@ const SearchCard = () => {
               <Button
                 variant={"outline"}
                 className={cn(
-                  "w-[177px] h-[60px] justify-start text-left font-normal",
+                  "w-[177px] h-[60px] justify-start text-left font-normal max-sm:w-full max-2xl:w-full",
                   !returnDate && "text-muted-foreground"
                 )}
               >
@@ -176,7 +176,7 @@ const SearchCard = () => {
 
       <div className="flex justify-end">
         <Link to="/results">
-          <Button className="flex gap-3 w-[249px] h-[48px] text-[16px] bg-[#003E39] font-light" onClick={() => handleSubmit()}>
+          <Button className="flex gap-3 w-[249px] max-sm:w-[180px] h-[48px] text-[16px] bg-[#003E39] font-light" onClick={() => handleSubmit()}>
             <img src={searchIcon} alt="logo" />
             Search flights
           </Button>

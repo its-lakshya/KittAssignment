@@ -12,15 +12,15 @@ const LoaderModal = () => {
   useEffect(() => {
     const timer1 = setTimeout(() => {
       setSpin1(tickIcona);
-    }, 2000);
+    }, 3000);
 
     const timer2 = setTimeout(() => {
       setSpin2(tickIcona);
-    }, 4000);
+    }, 6000);
 
     const timer3 = setTimeout(() => {
       setSpin3(tickIcona);
-    }, 6000);
+    }, 9000);
 
     return () => {
       clearTimeout(timer1);

@@ -24,7 +24,7 @@
   width: 50%;
   background: linear-gradient(90deg, rgba(58, 104, 137, 0.5) 0%, #3A6889 45.63%, rgba(58, 104, 137, 0.5) 100%);
   animation: loading 1.5s ease-in-out;
-  animation-iteration-count: 4;
+  animation-iteration-count: 6;
 }
 
 @keyframes loading {
