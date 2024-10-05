@@ -3,14 +3,29 @@ import leftArrowIcon from "../assets/images/leftArrowIcon.svg";
 import clockIcon from "../assets/images/clockIcon.svg";
 import lufthansaLogo from "../assets/images/lufthanslogo.svg";
 import "../components/Styles.css"
+import { useEffect, useRef } from "react";
 
 interface RouteModalProps {
   setShowRouteModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const RouteModal: React.FC<RouteModalProps> = ({setShowRouteModal}) => {
+  const routeModalRef = useRef<HTMLDivElement| null>(null)
+  const handleClickOutside = (event: MouseEvent) => {
+    if (routeModalRef.current && !routeModalRef.current.contains(event.target as Node)) {
+      setShowRouteModal(false);
+    }
+  };
+
+  useEffect(() => {
+    // Add event listener when the modal is open
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
   return (
-    <Card className="fixed top-0 bottom-0 right-6 flex flex-col gap-[24px] self-center w-[46%] h-[95vh] p-7 max-w-[800px] max-xl:w-[500px] max-sm:w-full max-sm:left-2">
+    <Card ref={routeModalRef} className="fixed top-0 bottom-0 right-6 flex flex-col gap-[24px] self-center w-[46%] h-[95vh] p-7 max-w-[800px] max-xl:w-[500px] max-sm:w-full max-sm:left-2">
       <img className="size-7 rotate-180 cursor-pointer" src={leftArrowIcon} alt="logo" onClick={() => setShowRouteModal(false)}/>
       <div className="text-[20px] font-medium">Flight details</div>
       <hr />
