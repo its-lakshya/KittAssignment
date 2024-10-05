@@ -24,6 +24,7 @@ const RouteModal: React.FC<RouteModalProps> = ({setShowRouteModal}) => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+  
   return (
     <Card ref={routeModalRef} className="fixed top-0 bottom-0 right-6 flex flex-col gap-[24px] self-center w-[46%] h-[95vh] p-7 max-w-[800px] max-xl:w-[500px] max-sm:w-full max-sm:left-2">
       <img className="size-7 rotate-180 cursor-pointer" src={leftArrowIcon} alt="logo" onClick={() => setShowRouteModal(false)}/>

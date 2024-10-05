@@ -63,7 +63,7 @@ const ResultsHeader = () => {
         </Link>
         {loading ? (
           <div className="bg-[#E5EBEB] h-1 absolute bottom-0 left-0 w-full z-0">
-            <div className="loading-bar"></div>
+            <div className={`loading-bar ${!loading ? 'hidden' : null}`}></div>
           </div>
         ) : null}
       </div>
