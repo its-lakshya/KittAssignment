@@ -38,7 +38,7 @@ import { useDispatch } from "react-redux";
 import { setJournyRedux } from "@/store/slices/journy.slice";
 
 
-const SearchCard = () => {
+const   SearchCard = () => {
   const [departureDate, setDepartureDate] = React.useState<Date>();
   const [returnDate, setReturnDate] = React.useState<Date>();
   const dispatch = useDispatch();

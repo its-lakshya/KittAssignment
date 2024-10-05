@@ -2,13 +2,16 @@ import searchIconGray from "../assets/images/searchIconGrey.svg";
 import crossIcon from "../assets/images/crossIcon.svg";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { RootState } from "../store/store"; // Adjust the path to your store
-import { journyState } from "../store/slices/journy.slice"; // Adjust the path to your types
-import "./Styles.css";
+import { RootState } from "../store/store";
+import { journyState } from "../store/slices/journy.slice";
 import { useEffect, useState } from "react";
+import SearchModal from "./SearchModal";
 // import { format } from "path";
+import "./Styles.css"
 
 const ResultsHeader = () => {
+  const [showSearchModal, setShowSearchModal] = useState(false);
+
   const journy: journyState = useSelector((state: RootState) => state.journy);
 
   const departureDate = journy.departure ? new Date(journy.departure) : null;
@@ -39,7 +42,9 @@ const ResultsHeader = () => {
   return (
     <div className="relative h-[106px] max-sm:h-[6px] w-full px-[13rem] max-xl:px-[6rem] max-lg:px-[3rem] max-sm:px-[1rem] flex justify-center items-center border-b border-[#E6E8EB]">
       <div className="w-full max-w-[1057px] flex justify-between items-center">
-        <div className="w-auto max-md:w-full max-sm:hidden h-[50px] border border-[#E6E8EB] rounded-full flex items-center justify-center gap-4 px-2 pl-8">
+        <div
+        onClick={() => setShowSearchModal(true)}
+        className="w-auto max-md:w-full max-sm:hidden h-[50px] border border-[#E6E8EB] rounded-full flex items-center justify-center gap-4 px-2 pl-8">
           <div className="text-[#787B80] font-light flex gap-2 border-r border-[#E6E8EB] pr-4 ">
             <span className="text-[16px] font-medium">ADE</span> {journy.from || "Mumbai"}
           </div>
@@ -57,11 +62,18 @@ const ResultsHeader = () => {
           <img className="cursor-pointer" src={crossIcon} alt="logo" />
         </Link>
         {loading ? (
-          <div className="bg-[#E5EBEB] h-1 absolute bottom-0 left-0 w-full">
+          <div className="bg-[#E5EBEB] h-1 absolute bottom-0 left-0 w-full z-0">
             <div className="loading-bar"></div>
           </div>
         ) : null}
       </div>
+        <div className={`search-modal shadow-none bg-white z-10 w-full ${showSearchModal ? 'search-slide-in' : 'search-slide-out'}`}>
+          <SearchModal setShowSearchModal={setShowSearchModal} />
+          {showSearchModal ? 
+          <div className='fixed h-screen w-full bg-gray-800 opacity-10 bg-transparent'></div>
+          : null
+          }
+        </div>
     </div>
   );
 };

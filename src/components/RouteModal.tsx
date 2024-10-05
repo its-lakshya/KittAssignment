@@ -2,6 +2,7 @@ import { Card } from "./ui/card";
 import leftArrowIcon from "../assets/images/leftArrowIcon.svg";
 import clockIcon from "../assets/images/clockIcon.svg";
 import lufthansaLogo from "../assets/images/lufthanslogo.svg";
+import "../components/Styles.css"
 
 interface RouteModalProps {
   setShowRouteModal: React.Dispatch<React.SetStateAction<boolean>>

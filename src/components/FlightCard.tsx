@@ -29,7 +29,7 @@ const FlightCard: React.FC<FlightCardProps> = ({ flight, setShowRouteModal }) =>
   }
 
   return (
-    <Card className="w-full h-[184px] max-lg:h-auto flex box-border cursor-pointer hover:bg-[#F5F7FA] shadow-none max-sm:flex-col">
+    <Card onClick={() => handleSelect()} className="w-full h-[184px] max-lg:h-auto flex box-border cursor-pointer hover:bg-[#F5F7FA] shadow-none max-sm:flex-col">
       <div className="flex flex-col p-8 w-full gap-8 justify-center">
         {flight.map((data, index) => {
           return (
@@ -75,7 +75,7 @@ const FlightCard: React.FC<FlightCardProps> = ({ flight, setShowRouteModal }) =>
             from
             <div className='text-xl'>AED {flight[0].price}</div>
           </div>
-          <Button className='text-[16px] font-light bg-[#003E39] cursor-pointer' onClick={() => handleSelect()}>Select</Button>
+          <Button className='text-[16px] font-light bg-[#003E39] cursor-pointer'>Select</Button>
         </div>
       </div>
     </Card>
